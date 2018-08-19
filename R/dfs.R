@@ -1,4 +1,4 @@
-#' Deep Feature Synthethis
+#' Deep Feature Synthesis
 #' @description The main function from featuretools used to create new features.
 #' @export
 #'
