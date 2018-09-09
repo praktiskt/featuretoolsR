@@ -8,6 +8,7 @@
 #' @return A tidy data.frame.
 #'
 #' @importFrom caret nearZeroVar
+#' @importFrom purrr map
 #'
 #' @examples
 #' library(magrittr)

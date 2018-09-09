@@ -2,7 +2,7 @@
 % Please edit documentation in R/dfs.R
 \name{dfs}
 \alias{dfs}
-\title{Deep Feature Synthethis}
+\title{Deep Feature Synthesis}
 \usage{
 dfs(entityset, target_entity, agg_primitives = NULL,
   trans_primitives = NULL, max_depth = NULL, ...)

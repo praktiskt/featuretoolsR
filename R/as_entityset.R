@@ -2,6 +2,8 @@
 #' @description Create an entityset with a selected `data.frame` as an entity.
 #' @export
 #'
+#' @importFrom dplyr ungroup
+#'
 #' @param .data The `data.frame` to be added as an entity to entityset.
 #' @param id The id of this entityset.
 #' @param index Name of id column in the dataframe.
