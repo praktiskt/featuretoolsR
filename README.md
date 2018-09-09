@@ -1,8 +1,8 @@
 # featuretoolsR
-An R interface to the Python module Featuretools
+An R interface to the Python module Featuretools.
 
 # General
-featuretoolsR provides some functionality from the Python module Featuretools, which aims to automate feature engineering. This package will very much be a work in progress as Featuretools offers a lot of functionality. Any PRs will be much appreciated.
+`featuretoolsR` provides functionality from the Python module `featuretools`, which aims to automate feature engineering. This package is very much a work in progress as Featuretools offers a lot of functionality. Any PRs are much appreciated.
 
 # Installing
 The recommended way is to install this package with devtools: `devtools::install_github("magnusfurugard/featuretoolsR")`.
