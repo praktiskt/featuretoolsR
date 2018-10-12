@@ -10,5 +10,18 @@ load_features(file = NA)
 \item{file}{The file containing the features.}
 }
 \description{
-Used to load previously saved features created during `dfs`.
+Used to load previously saved features created during \link[featuretoolsR]{dfs}.
+}
+\examples{
+# Use dfs to create features
+as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") \%>\%
+  add_entity(entity_id = "set_2", df = set_2, index = "key") \%>\%
+  add_relationship(set1 = "set_1", set2 = "set_2", idx = "key") \%>\%
+  dfs(target_entity = "set_1", trans_primitives = c("and", "divide")) \%>\%
+  extract_features() \%>\%
+  save_features(filename = "some.features")
+
+# Load saves features
+features <- load_features("some.features")
+
 }

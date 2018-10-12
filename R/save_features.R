@@ -1,12 +1,12 @@
 #' Save features
-#' @description Used to save all or a subset of features created during `dfs`.
+#' @description Used to save all or a subset of features created during \link[featuretoolsR]{dfs}.
 #' @export
 #'
 #' @importFrom glue glue
 #' @importFrom stringr str_sub
 #' @importFrom tibble is.tibble
 #'
-#' @param .data The tibble of features returned from `extract_features`.
+#' @param .data The tibble of features returned from \link[featuretoolsR]{extract_features}.
 #'
 #' @examples
 #' library(magrittr)

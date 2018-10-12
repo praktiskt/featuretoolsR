@@ -1,9 +1,9 @@
 #' Tidy feature matrix
-#' @description Used for tidying up ('R-ify') the feature matrix after deep feature synthethis (`dfs(...)`).
+#' @description Used for tidying up ('R-ify') the feature matrix after deep feature synthethis (\link[featuretoolsR]{dfs}).
 #' @export
 #'
-#' @param .data The featuretools-object returned from `dfs`.
-#' @param remove_nzv Remove near zero variance variables created from `dfs`.
+#' @param .data The featuretools-object returned from \link[featuretoolsR]{dfs}.
+#' @param remove_nzv Remove near zero variance variables created from \link[featuretoolsR]{dfs}.
 #' @param nan_is_na Turn all `NaN` into `NA`.
 #' @return A tidy data.frame.
 #'

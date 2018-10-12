@@ -10,7 +10,7 @@ list_primitives()
 A list of all primitives available.
 }
 \description{
-List all available primitives from `featuretools` which can be passed to `dfs`.
+List all available primitives from `featuretools` which can be passed to \link[featuretoolsR]{dfs}.
 }
 \examples{
 featuretoolsR::list_primitives()

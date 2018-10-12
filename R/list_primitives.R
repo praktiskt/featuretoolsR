@@ -1,5 +1,5 @@
 #' List all available primitives.
-#' @description List all available primitives from `featuretools` which can be passed to `dfs`.
+#' @description List all available primitives from `featuretools` which can be passed to \link[featuretoolsR]{dfs}.
 #' @export
 #'
 #' @return A list of all primitives available.

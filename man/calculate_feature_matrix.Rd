@@ -9,7 +9,7 @@ calculate_feature_matrix(entityset, features, ...)
 \arguments{
 \item{entityset}{The entityset on which to create features.}
 
-\item{features}{The features to create based on previous runs of `dfs`.}
+\item{features}{The features to create based on previous runs of \link[featuretoolsR]{dfs}.}
 
 \item{...}{Additional parameters passed to `featuretoools.calculate_feature_matrix`.}
 }
@@ -17,5 +17,10 @@ calculate_feature_matrix(entityset, features, ...)
 A feature matrix
 }
 \description{
-This function is used to create a feature matrix based on a custom list of features (usually created from `save_features`).
+This function is used to create a feature matrix based on a custom list of features (usually created from \link[featuretoolsR]{save_features}).
+}
+\examples{
+es <- as_entityset(cars, index = "row_number")
+calculate_feature_matrix(entityset = es, features = load_features("path_to_features"))
+
 }

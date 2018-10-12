@@ -1,5 +1,5 @@
 #' Load features
-#' @description Used to load previously saved features created during `dfs`.
+#' @description Used to load previously saved features created during \link[featuretoolsR]{dfs}.
 #' @export
 #'
 #' @param file The file containing the features.

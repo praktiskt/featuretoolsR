@@ -1,9 +1,9 @@
 #' Extract features
-#' @description This function is used to extract all features created from `dfs(...)`.
+#' @description This function is used to extract all features created from \link[featuretoolsR]{dfs}.
 #' @export
 #'
-#' @param .data The featuretools-object returned from `dfs`.
-#' @return All features created during dfs, as a tibble.
+#' @param .data The featuretools-object returned from \link[featuretoolsR]{dfs}.
+#' @return All features created during \link[featuretoolsR]{dfs}, as a tibble.
 #'
 #' @importFrom tibble tibble
 #' @importFrom purrr map

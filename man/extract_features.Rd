@@ -7,13 +7,13 @@
 extract_features(.data)
 }
 \arguments{
-\item{.data}{The featuretools-object returned from `dfs`.}
+\item{.data}{The featuretools-object returned from \link[featuretoolsR]{dfs}.}
 }
 \value{
-All features created during dfs, as a tibble.
+All features created during \link[featuretoolsR]{dfs}, as a tibble.
 }
 \description{
-This function is used to extract all features created from `dfs(...)`.
+This function is used to extract all features created from \link[featuretoolsR]{dfs}.
 }
 \examples{
 library(magrittr)
@@ -27,4 +27,5 @@ as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") \%>\%
   add_relationship(set1 = "set_1", set2 = "set_2", idx = "key") \%>\%
   dfs(target_entity = "set_1", trans_primitives = c("and", "divide")) \%>\%
   extract_features()
+
 }

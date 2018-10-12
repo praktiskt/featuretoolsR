@@ -7,9 +7,9 @@
 tidy_feature_matrix(.data, remove_nzv = F, nan_is_na = F)
 }
 \arguments{
-\item{.data}{The featuretools-object returned from `dfs`.}
+\item{.data}{The featuretools-object returned from \link[featuretoolsR]{dfs}.}
 
-\item{remove_nzv}{Remove near zero variance variables created from `dfs`.}
+\item{remove_nzv}{Remove near zero variance variables created from \link[featuretoolsR]{dfs}.}
 
 \item{nan_is_na}{Turn all `NaN` into `NA`.}
 }
@@ -17,7 +17,7 @@ tidy_feature_matrix(.data, remove_nzv = F, nan_is_na = F)
 A tidy data.frame.
 }
 \description{
-Used for tidying up ('R-ify') the feature matrix after deep feature synthethis (`dfs(...)`).
+Used for tidying up ('R-ify') the feature matrix after deep feature synthethis (\link[featuretoolsR]{dfs}).
 }
 \examples{
 library(magrittr)

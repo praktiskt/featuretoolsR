@@ -7,10 +7,10 @@
 save_features(.data, filename = NA, path = NA)
 }
 \arguments{
-\item{.data}{The tibble of features returned from `extract_features`.}
+\item{.data}{The tibble of features returned from \link[featuretoolsR]{extract_features}.}
 }
 \description{
-Used to save all or a subset of features created during `dfs`.
+Used to save all or a subset of features created during \link[featuretoolsR]{dfs}.
 }
 \examples{
 library(magrittr)

@@ -1,9 +1,9 @@
 #' Calculate feature matrix
-#' @description This function is used to create a feature matrix based on a custom list of features (usually created from `save_features`).
+#' @description This function is used to create a feature matrix based on a custom list of features (usually created from \link[featuretoolsR]{save_features}).
 #' @export
 #'
 #' @param entityset The entityset on which to create features.
-#' @param features The features to create based on previous runs of `dfs`.
+#' @param features The features to create based on previous runs of \link[featuretoolsR]{dfs}.
 #' @param ... Additional parameters passed to `featuretoools.calculate_feature_matrix`.
 #' @return A feature matrix
 #'
