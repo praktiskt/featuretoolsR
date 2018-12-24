@@ -33,7 +33,8 @@ as_entityset <- function(.data,
   if(is.na(index)) {
     warning("`index` is `NA`. Using new variable `row_number` as index.")
     .data <- dplyr::ungroup(.data)
-    .data$rownumber = 1:nrow(.data)
+    .data$rownumber <- 1:nrow(.data)
+    index <- "rownumber"
   }
 
   # Add first entity to entityset.
