@@ -21,7 +21,7 @@ as_entityset <- function(.data,
                          ...) {
 
   # Sanitize input.
-  if(class(.data) != "data.frame") stop("`.data` is not of type `data.frame`")
+  if (!is.data.frame(.data)) stop("`.data` is not of type `data.frame`")
   if(is.na(id)) stop("`id` cannot be `NA`. Leave empty for default name.")
   if(nrow(.data) == 0) warning("`.data` contains zero rows.`")
 
