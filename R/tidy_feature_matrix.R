@@ -9,6 +9,7 @@
 #'
 #' @importFrom caret nearZeroVar
 #' @importFrom purrr map
+#' @importFrom tibble as.tibble
 #'
 #' @examples
 #' library(magrittr)
@@ -27,7 +28,7 @@ tidy_feature_matrix <- function(.data,
                                 nan_is_na = F) {
 
   # Coerce into R-object.
-  to_r <- reticulate::py_to_r(.data[[1]])
+  to_r <- tibble::as.tibble(reticulate::py_to_r(.data[[1]]))
 
   # Variables get duplicated when coercing object from Python to R. Cleanup.
   nondupe <- to_r[, !duplicated(names(to_r))]
@@ -54,11 +55,13 @@ tidy_feature_matrix <- function(.data,
   if(nan_is_na) {
     cat("Changing all `NaN` to `NA`\n")
     for (colname in names(nondupe)) {
-      nondupe[, colname][is.nan(nondupe[, colname])] <- NA
+      nondupe[, colname][[1]][is.nan(nondupe[, colname][[1]])] <- NA
     }
   }
 
+  # Back to data.frame
+  result <- as.data.frame(nondupe)
 
-  return(nondupe)
+  return(result)
 
 }
