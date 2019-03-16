@@ -16,7 +16,7 @@ dfs <- function(entityset,
                 target_entity,
                 agg_primitives = NULL,
                 trans_primitives = NULL,
-                max_depth = NULL,
+                max_depth = 2L,
                 ...) {
 
   # Load featuretools
