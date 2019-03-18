@@ -52,6 +52,9 @@ add_relationship <- function(entityset,
   index_set2_pos <- dplyr::filter(es_names,
                                   variable_name == idx,
                                   entity_name == set2)$variable_idx
+  if (length(index_set1_pos) == 0 || length(index_set2_pos) == 0) {
+    stop("Couldn't find index column [", idx, "] in [", set1, "] or [", set2, "]")
+  }
 
   # Construct new relationship
   rel <- ft$Relationship(
