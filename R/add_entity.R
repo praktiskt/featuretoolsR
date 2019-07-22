@@ -16,12 +16,14 @@
 #'   add_entity(df = cars,
 #'              entity_id = "cars",
 #'              index = "row_number")
-add_entity <- function(entityset,
-                       entity_id,
-                       df,
-                       index = NULL,
-                       time_index = NULL,
-                       ...) {
+add_entity <- function(
+  entityset,
+  entity_id,
+  df,
+  index = NULL,
+  time_index = NULL,
+  ...
+) {
   ft <- reticulate::import("featuretools")
 
   # Construct variable_types to handle factors as categorical variables.
