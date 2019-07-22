@@ -18,10 +18,12 @@
 #' as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") %>%
 #'   add_entity(entity_id = "set_2", df = set_2, index = "key") %>%
 #'   add_relationship(set1 = "set_1", set2 = "set_2", idx = "key")
-add_relationship <- function(entityset,
-                             set1,
-                             set2,
-                             idx) {
+add_relationship <- function(
+  entityset,
+  set1,
+  set2,
+  idx
+) {
 
   ft <- reticulate::import("featuretools")
 
@@ -53,7 +55,7 @@ add_relationship <- function(entityset,
                                   variable_name == idx,
                                   entity_name == set2)$variable_idx
   if (length(index_set1_pos) == 0 || length(index_set2_pos) == 0) {
-    stop("Couldn't find index column [", idx, "] in [", set1, "] or [", set2, "]")
+    stop("Couldn't find index column `", idx, "` in `", set1, "` or `", set2, "`")
   }
 
   # Construct new relationship
