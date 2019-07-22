@@ -13,12 +13,14 @@
 #'
 #' @examples
 #' as_entityset(cars, index = "row_number")
-as_entityset <- function(.data,
-                         id = "entityset",
-                         index = NA,
-                         time_index = NULL,
-                         entity_id = "df1",
-                         ...) {
+as_entityset <- function(
+  .data,
+  id = "entityset",
+  index = NA,
+  time_index = NULL,
+  entity_id = "df1",
+  ...
+) {
 
   # Sanitize input.
   if (!is.data.frame(.data)) stop("`.data` is not of type `data.frame`")
@@ -35,6 +37,18 @@ as_entityset <- function(.data,
     .data <- dplyr::ungroup(.data)
     .data$rownumber <- 1:nrow(.data)
     index <- "rownumber"
+  }
+
+  # Fix reticulate datetime64 support
+  if(getOption("featuretoolsR.force_posixct")) {
+    .cols = lapply(df, class)
+    for (i in 1:length(.cols)) {
+      colname <- names(.cols)[i]
+      coltype <- .cols[[colname]]
+      if (any(coltype == "Date")) {
+        df[,colname] <- as.POSIXct(df[,colname], getOption("featuretoolsR.posixct_tz"))
+      }
+    }
   }
 
   # Add first entity to entityset.
