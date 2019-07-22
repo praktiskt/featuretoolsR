@@ -5,6 +5,7 @@
 #' @param .data The featuretools-object returned from \link[featuretoolsR]{dfs}.
 #' @param remove_nzv Remove near zero variance variables created from \link[featuretoolsR]{dfs}.
 #' @param nan_is_na Turn all `NaN` into `NA`.
+#' @param clean_names Make variable names R-friendly (snake case).
 #' @return A tidy data.frame.
 #'
 #' @importFrom caret nearZeroVar
@@ -23,9 +24,12 @@
 #'   add_relationship(set1 = "set_1", set2 = "set_2", idx = "key") %>%
 #'   dfs(target_entity = "set_1", trans_primitives = c("and", "divide")) %>%
 #'   tidy_feature_matrix(remove_nzv = T, nan_is_na = T)
-tidy_feature_matrix <- function(.data,
-                                remove_nzv = F,
-                                nan_is_na = F) {
+tidy_feature_matrix <- function(
+  .data,
+  remove_nzv = F,
+  nan_is_na = F,
+  clean_names = F
+) {
 
   # Coerce into R-object.
   to_r <- tibble::as.tibble(reticulate::py_to_r(.data[[1]]))
@@ -57,6 +61,15 @@ tidy_feature_matrix <- function(.data,
     for (colname in names(nondupe)) {
       nondupe[, colname][[1]][is.nan(nondupe[, colname][[1]])] <- NA
     }
+  }
+
+  ## Make variable names more R-friendly
+  if(clean_names) {
+    cat("Creating R-friendly variable names\n")
+    n <- tolower(names(nondupe))
+    tn <- gsub("[^A-z0-9]", "_", n)
+    tn <- gsub("(_+?$)|(__+?)", "", tn)
+    names(nondupe) <- tn
   }
 
   # Back to data.frame
