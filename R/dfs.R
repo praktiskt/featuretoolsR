@@ -12,16 +12,26 @@
 #' @examples
 #' es <- as_entityset(cars, index = "row_number")
 #' dfs(es, target_entity = "df1", trans_primitives = c("and", "divide"))
-dfs <- function(entityset,
-                target_entity,
-                agg_primitives = NULL,
-                trans_primitives = NULL,
-                max_depth = 2L,
-                ...) {
-
+dfs <- function(
+  entityset,
+  target_entity,
+  agg_primitives = NULL,
+  trans_primitives = NULL,
+  max_depth = 2L,
+  ...
+) {
   # Load featuretools
   ft <- reticulate::import("featuretools")
 
+  # Check primitives
+  if(!is.list(agg_primitives)) {
+    agg_primitives <- as.list(agg_primitives)
+  }
+  if(!is.list(trans_primitives)) {
+    trans_primitives <- as.list(trans_primitives)
+  }
+
+  # DFS
   feature_matrix <- ft$dfs(
     entityset = entityset,
     target_entity = target_entity,
