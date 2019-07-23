@@ -21,7 +21,11 @@
 #'   dfs(target_entity = "set_1", trans_primitives = c("and", "divide")) %>%
 #'   extract_features() %>%
 #'   save_features()
-save_features <- function(.data, filename = NA, path = NA) {
+save_features <- function(
+  .data,
+  filename = NA,
+  path = NA
+) {
 
   # Sanitize input
   ## Input should be a tibble with 2 variables.

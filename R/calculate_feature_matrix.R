@@ -11,9 +11,11 @@
 #' es <- as_entityset(cars, index = "row_number")
 #' calculate_feature_matrix(entityset = es, features = load_features("path_to_features"))
 #'
-calculate_feature_matrix <- function(entityset,
-                                     features,
-                                     ...) {
+calculate_feature_matrix <- function(
+  entityset,
+  features,
+  ...
+) {
 
   # Import featuretools
   ft <- reticulate::import("featuretools")

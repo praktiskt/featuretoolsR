@@ -1,12 +1,11 @@
 Package: featuretoolsR
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Interact with the Python module Featuretools through R.
+Version: 0.2.0
+Authors@R: person("Magnus", "Furugård", email = "magnus.furugard@gmail.com", role = c("aut", "cre"))
+Maintainer: Magnus Furugård <magnus.furugard@gmail.com>
+Description: A reticulate-based interface to the Python module Featuretools.
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

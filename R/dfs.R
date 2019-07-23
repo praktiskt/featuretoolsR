@@ -12,16 +12,41 @@
 #' @examples
 #' es <- as_entityset(cars, index = "row_number")
 #' dfs(es, target_entity = "df1", trans_primitives = c("and", "divide"))
-dfs <- function(entityset,
-                target_entity,
-                agg_primitives = NULL,
-                trans_primitives = NULL,
-                max_depth = 2L,
-                ...) {
-
+dfs <- function(
+  entityset,
+  target_entity,
+  agg_primitives = NULL,
+  trans_primitives = NULL,
+  max_depth = 2L,
+  ...
+) {
   # Load featuretools
   ft <- reticulate::import("featuretools")
 
+  # Ensure primitives are in the correct format
+  if(!is.list(agg_primitives)) {
+    agg_primitives <- as.list(agg_primitives)
+  }
+  if(!is.list(trans_primitives)) {
+    trans_primitives <- as.list(trans_primitives)
+  }
+
+  # Ensure primitives are valid
+  aggs <- list_primitives()[list_primitives()$type=="aggregation", "name"]
+  .agg_primitives <- unlist(agg_primitives)
+  if(any(!(.agg_primitives %in% aggs))) {
+    invalid <- paste0(.agg_primitives[!(.agg_primitives %in% aggs)], collapse = "`, `")
+    stop("Invalid aggregate primitive(s): `", invalid, "`. Use list_primitives() to find valid primitives.")
+  }
+
+  trans <- list_primitives()[list_primitives()$type=="transform", "name"]
+  .trans_primitives <- unlist(trans_primitives)
+  if(any(!(.trans_primitives %in% trans))) {
+    invalid <- paste0(.trans_primitives[!(.trans_primitives %in% trans)], collapse = "`, `")
+    stop("Invalid transform primitive(s): `", invalid, "`. Use list_primitives() to find valid primitives.")
+  }
+
+  # DFS
   feature_matrix <- ft$dfs(
     entityset = entityset,
     target_entity = target_entity,
