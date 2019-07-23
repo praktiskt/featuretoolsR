@@ -55,7 +55,7 @@ The bread and butter of Featuretools is the `dfs`-function (official docs [here]
 ft_matrix <- es %>%
   dfs(
     target_entity = "set_1", 
-    trans_primitives = c("and", "divide")
+    trans_primitives = c("and", "is_null")
   )
 ```
 
