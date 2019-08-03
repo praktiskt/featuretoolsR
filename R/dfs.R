@@ -6,12 +6,13 @@
 #' @param target_entity The name of the entity on which to perform dfs.
 #' @param agg_primitives Primitives passed to relational data.
 #' @param trans_primitives Primitives passed to non-relational data.
+#' @param max_depth Controls the maximum depth of features.
 #' @param ... Additional parameters passed to `featuretools.dfs`.
 #' @return A `featuretools` feature matrix.
 #'
 #' @examples
 #' es <- as_entityset(cars, index = "row_number")
-#' dfs(es, target_entity = "df1", trans_primitives = c("and", "divide"))
+#' dfs(es, target_entity = "df1", trans_primitives = c("and"))
 dfs <- function(
   entityset,
   target_entity,

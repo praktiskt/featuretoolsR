@@ -5,7 +5,7 @@
 \title{Deep Feature Synthesis}
 \usage{
 dfs(entityset, target_entity, agg_primitives = NULL,
-  trans_primitives = NULL, max_depth = NULL, ...)
+  trans_primitives = NULL, max_depth = 2L, ...)
 }
 \arguments{
 \item{entityset}{The entityset on which to perform dfs.}
@@ -15,6 +15,8 @@ dfs(entityset, target_entity, agg_primitives = NULL,
 \item{agg_primitives}{Primitives passed to relational data.}
 
 \item{trans_primitives}{Primitives passed to non-relational data.}
+
+\item{max_depth}{Controls the maximum depth of features.}
 
 \item{...}{Additional parameters passed to `featuretools.dfs`.}
 }
@@ -26,5 +28,5 @@ The main function from featuretools used to create new features.
 }
 \examples{
 es <- as_entityset(cars, index = "row_number")
-dfs(es, target_entity = "df1", trans_primitives = c("and", "divide"))
+dfs(es, target_entity = "df1", trans_primitives = c("and"))
 }

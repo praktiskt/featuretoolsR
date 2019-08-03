@@ -7,20 +7,22 @@
 #' @importFrom tibble is.tibble
 #'
 #' @param .data The tibble of features returned from \link[featuretoolsR]{extract_features}.
+#' @param filename (optional) The name of the file to produce.
+#' @param path (optional) The path where the feature file should be placed.
 #'
 #' @examples
 #' library(magrittr)
-#' options(stringsAsFactors = T)
-#' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, T))
-#' set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, T))
+#' options(stringsAsFactors = TRUE)
+#' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
+#' set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, TRUE))
 #' # Common variable: `key`
 #'
 #' as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") %>%
 #'   add_entity(entity_id = "set_2", df = set_2, index = "key") %>%
 #'   add_relationship(set1 = "set_1", set2 = "set_2", idx = "key") %>%
-#'   dfs(target_entity = "set_1", trans_primitives = c("and", "divide")) %>%
+#'   dfs(target_entity = "set_1", trans_primitives = c("and")) %>%
 #'   extract_features() %>%
-#'   save_features()
+#'   save_features(filename = "some.features", path = "../")
 save_features <- function(
   .data,
   filename = NA,
@@ -48,10 +50,13 @@ save_features <- function(
 
   ## If user didn't specify a file name, generate one.
   if(is.na(filename)) {
-    tmp <- paste0(paste0(sample(c(letters, LETTERS), 16, F), collapse = ""), ".features")
+    tmp <- paste0(paste0(sample(c(letters, LETTERS), 16, FALSE), collapse = ""), ".features")
     warning(glue::glue("No `filename` passed, generated: ", tmp, "\n"))
     path <- paste0(path, tmp)
+  } else {
+    path <- paste0(path, filename)
   }
+
 
   # Load featuretools
   ft <- reticulate::import("featuretools")
@@ -59,7 +64,7 @@ save_features <- function(
   # Save all features passed from `extract_features`.
   ft$save_features(
     features = .data$feature,
-    filepath = path
+    location = path
   )
 
   return(TRUE)

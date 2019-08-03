@@ -7,7 +7,7 @@
 install_featuretools()
 }
 \description{
-A shortcut for installing `featuretools` with `pip`.
+Setup for featuretools in it's own virtualenv.
 }
 \examples{
 featuretoolsR::install_featuretools()

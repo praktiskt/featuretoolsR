@@ -4,7 +4,8 @@
 \alias{add_entity}
 \title{add_entity}
 \usage{
-add_entity(entityset, entity_id, df, index = NULL, time_index = NULL, ...)
+add_entity(entityset, entity_id, df, index = NULL, time_index = NULL,
+  ...)
 }
 \arguments{
 \item{entityset}{The entity set to modify.}

@@ -15,8 +15,7 @@ install_featuretools <- function() {
   }
 
   # Check if featuretools is installed
-  ft_dir <- paste(path, "bin", "featuretools", sep = "/")
-  if(!file.exists(ft_dir)) {
+  if(!reticulate::py_module_available("featuretools")) {
     message("Installing featuretools into ", path)
     # Install featuretools
     reticulate::virtualenv_install(virtualenv_name, packages = "featuretools")

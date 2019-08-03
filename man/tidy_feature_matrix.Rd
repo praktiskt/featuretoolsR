@@ -4,7 +4,8 @@
 \alias{tidy_feature_matrix}
 \title{Tidy feature matrix}
 \usage{
-tidy_feature_matrix(.data, remove_nzv = F, nan_is_na = F)
+tidy_feature_matrix(.data, remove_nzv = FALSE, nan_is_na = FALSE,
+  clean_names = FALSE)
 }
 \arguments{
 \item{.data}{The featuretools-object returned from \link[featuretoolsR]{dfs}.}
@@ -12,6 +13,8 @@ tidy_feature_matrix(.data, remove_nzv = F, nan_is_na = F)
 \item{remove_nzv}{Remove near zero variance variables created from \link[featuretoolsR]{dfs}.}
 
 \item{nan_is_na}{Turn all `NaN` into `NA`.}
+
+\item{clean_names}{Make variable names R-friendly (snake case).}
 }
 \value{
 A tidy data.frame.
@@ -21,14 +24,14 @@ Used for tidying up ('R-ify') the feature matrix after deep feature synthethis (
 }
 \examples{
 library(magrittr)
-options(stringsAsFactors = T)
-set_1 <- data.frame(key = 1:100, value = sample(letters, 100, T))
-set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, T))
+options(stringsAsFactors = TRUE)
+set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
+set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, TRUE))
 # Common variable: `key`
 
 as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") \%>\%
   add_entity(entity_id = "set_2", df = set_2, index = "key") \%>\%
   add_relationship(set1 = "set_1", set2 = "set_2", idx = "key") \%>\%
-  dfs(target_entity = "set_1", trans_primitives = c("and", "divide")) \%>\%
-  tidy_feature_matrix(remove_nzv = T, nan_is_na = T)
+  dfs(target_entity = "set_1", trans_primitives = c("and")) \%>\%
+  tidy_feature_matrix(remove_nzv = TRUE, nan_is_na = TRUE)
 }

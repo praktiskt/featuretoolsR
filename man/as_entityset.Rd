@@ -16,6 +16,8 @@ as_entityset(.data, id = "entityset", index = NA, time_index = NULL,
 
 \item{time_index}{Name of the time column in the dataframe.}
 
+\item{entity_id}{An identifier for this entity.}
+
 \item{...}{Additional variables passed to `add_entity`.}
 }
 \value{
