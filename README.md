@@ -10,7 +10,7 @@ An R interface to the Python module Featuretools.
 The recommended way is to install this package with devtools: `devtools::install_github("magnusfurugard/featuretoolsR")`.
 
 ## Featuretools
-You'll need to have a working Python environment as well as `featuretools` installed. The recommended way is to use the built-in function `ìnstall_featuretools()` which automatically sets up a virtual environment for the package and installs `featuretools`.
+You'll need to have a working Python environment as well as `featuretools` installed. The recommended way is to use the built-in function `install_featuretools()` which automatically sets up a virtual environment for the package and installs `featuretools`.
 
 # Usage
 All functions in `featuretoolsR` comes with documentation, but it's advised to briefly browse through the [Featuretools Python documentation](https://docs.featuretools.com/index.html). It'll cover things like `entities`, `relationships` and `dfs`. 
