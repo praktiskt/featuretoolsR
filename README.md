@@ -5,9 +5,12 @@ An R interface to the Python module Featuretools.
 `featuretoolsR` provides functionality from the Python module `featuretools`, which aims to automate feature engineering. This package is very much a work in progress as Featuretools offers a lot of functionality. Any PRs are much appreciated.
 
 # Installing
+
+## Package
 The recommended way is to install this package with devtools: `devtools::install_github("magnusfurugard/featuretoolsR")`.
 
-In addition, you need to have a working Python environment as well as `featuretools` installed. There is a convenience-function available `featuretoolsR::install_featuretools()` for this. Depending on your machines settings it might require you to run it with proper permissions in a terminal. If so, just install it with pip: `pip install featuretools`
+## Featuretools
+You'll need to have a working Python environment as well as `featuretools` installed. The recommended way is to use the built-in function `ìnstall_featuretools()` which automatically sets up a virtual environment for the package and installs `featuretools`.
 
 # Usage
 All functions in `featuretoolsR` comes with documentation, but it's advised to briefly browse through the [Featuretools Python documentation](https://docs.featuretools.com/index.html). It'll cover things like `entities`, `relationships` and `dfs`. 
