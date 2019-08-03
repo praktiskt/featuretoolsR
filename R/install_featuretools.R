@@ -11,7 +11,7 @@ install_featuretools <- function() {
   if(!file.exists(path)) {
     reticulate::virtualenv_create(virtualenv_name)
   } else {
-    message("Created new virtualenv in ", path)
+    message("Using existing virtualenv in ", path)
   }
 
   # Check if featuretools is installed
