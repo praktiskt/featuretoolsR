@@ -1,7 +1,7 @@
 Package: featuretoolsR
 Type: Package
 Title: Interact with the Python module Featuretools through R.
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: person("Magnus", "Furugård", email = "magnus.furugard@gmail.com", role = c("aut", "cre"))
 Maintainer: Magnus Furugård <magnus.furugard@gmail.com>
 Description: A reticulate-based interface to the Python module Featuretools.
