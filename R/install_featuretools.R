@@ -23,5 +23,5 @@ install_featuretools <- function() {
   }
 
   # Use new virtualenv
-  use_virtualenv(virtualenv_name)
+  reticulate::use_virtualenv(virtualenv_name)
 }
