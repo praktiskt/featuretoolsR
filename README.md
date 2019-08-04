@@ -53,9 +53,10 @@ With relational data, it's useful to define a relationship between two or more e
 ```
 es <- es %>%
   add_relationship(
-    set1 = "set_1", 
-    set2 = "set_2", 
-    idx = "key"
+    parent_set = "set_1", 
+    child_set = "set_2", 
+    parent_idx = "key", 
+    child_idx = "key"
   )
 ```
 

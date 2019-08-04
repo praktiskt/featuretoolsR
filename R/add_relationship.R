@@ -3,9 +3,10 @@
 #' @export
 #'
 #' @param entityset The entityset to modify.
-#' @param set1 The name of the first entity to link.
-#' @param set2 The name of the second entity to link.
-#' @param idx The variable  `set1` and `set2` have in common.
+#' @param parent_set The name of the parent set.
+#' @param child_set The name of the child set.
+#' @param parent_idx The index variable of the `parent_set`.
+#' @param child_idx The index variable of the `child_set`.
 #' @return A modified entityset.
 #'
 #' @examples
@@ -17,12 +18,18 @@
 #'
 #' as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") %>%
 #'   add_entity(entity_id = "set_2", df = set_2, index = "key") %>%
-#'   add_relationship(set1 = "set_1", set2 = "set_2", idx = "key")
+#'   add_relationship(
+#'     parent_set = "set_1",
+#'     child_set = "set_2",
+#'     parent_idx = "key",
+#'     child_idx = "key"
+#'   )
 add_relationship <- function(
   entityset,
-  set1,
-  set2,
-  idx
+  parent_set,
+  child_set,
+  parent_idx,
+  child_idx
 ) {
   # Find indexes for entites and variables inside entitysets
   es_names <- purrr::map_dfr(lapply(
@@ -43,19 +50,23 @@ add_relationship <- function(
     }
   ), c)
 
-  entity_set1_pos <- es_names$entity_idx[es_names$entity_name == set1][[1]]
-  entity_set2_pos <- es_names$entity_idx[es_names$entity_name == set2][[1]]
-  index_set1_pos <- es_names$variable_idx[es_names$variable_name == idx & es_names$entity_name == set1]
-  index_set2_pos <- es_names$variable_idx[es_names$variable_name == idx & es_names$entity_name == set2]
+  entity_parent_set_pos <- es_names$entity_idx[es_names$entity_name == parent_set][[1]]
+  entity_child_set_pos <- es_names$entity_idx[es_names$entity_name == child_set][[1]]
+  index_parent_set_pos <- es_names$variable_idx[es_names$variable_name == parent_idx & es_names$entity_name == parent_set]
+  index_child_set_pos <- es_names$variable_idx[es_names$variable_name == child_idx & es_names$entity_name == child_set]
 
-  if (length(index_set1_pos) == 0 || length(index_set2_pos) == 0) {
-    stop("Couldn't find index column `", idx, "` in `", set1, "` or `", set2, "`")
+  if (length(index_parent_set_pos) == 0) {
+    stop("Couldn't find index column `", parent_idx, "` in `", parent_set, "`")
+  }
+
+  if (length(index_child_set_pos) == 0) {
+    stop("Couldn't find index column `", child_idx, "` in `", child_set, "`")
   }
 
   # Construct new relationship
   rel <- .ft$Relationship(
-    entityset$entities[[entity_set1_pos]]$variables[[index_set1_pos]],
-    entityset$entities[[entity_set2_pos]]$variables[[index_set2_pos]]
+    entityset$entities[[entity_parent_set_pos]]$variables[[index_parent_set_pos]],
+    entityset$entities[[entity_child_set_pos]]$variables[[index_child_set_pos]]
   )
 
   # Add relationship to entityset
