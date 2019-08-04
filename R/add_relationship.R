@@ -10,6 +10,7 @@
 #' @return A modified entityset.
 #'
 #' @examples
+#' \dontrun{
 #' library(magrittr)
 #' options(stringsAsFactors = TRUE)
 #' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
@@ -24,6 +25,7 @@
 #'     parent_idx = "key",
 #'     child_idx = "key"
 #'   )
+#' }
 add_relationship <- function(
   entityset,
   parent_set,

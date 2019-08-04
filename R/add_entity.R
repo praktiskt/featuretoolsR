@@ -11,11 +11,13 @@
 #' @return A modified entityset.
 #'
 #' @examples
+#' \dontrun{
 #' library(magrittr)
 #' create_entityset("set") %>%
 #'   add_entity(df = cars,
 #'              entity_id = "cars",
 #'              index = "row_number")
+#' }
 add_entity <- function(
   entityset,
   entity_id,

@@ -13,6 +13,7 @@ load_features(file = NA)
 Used to load previously saved features created during \link[featuretoolsR]{dfs}.
 }
 \examples{
+\dontrun{
 library(magrittr)
 
 # Create mock datasets
@@ -35,5 +36,5 @@ as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") \%>\%
 
 # Load saves features
 features <- load_features("some.features")
-
+}
 }

@@ -24,6 +24,7 @@ A modified entityset.
 Add a relationship to an entityset.
 }
 \examples{
+\dontrun{
 library(magrittr)
 options(stringsAsFactors = TRUE)
 set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
@@ -38,4 +39,5 @@ as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") \%>\%
     parent_idx = "key",
     child_idx = "key"
   )
+}
 }

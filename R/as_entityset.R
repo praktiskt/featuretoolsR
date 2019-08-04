@@ -13,7 +13,9 @@
 #' @return A modified entityset.
 #'
 #' @examples
+#' \dontrun{
 #' as_entityset(cars, index = "row_number")
+#' }
 as_entityset <- function(
   .data,
   id = "entityset",

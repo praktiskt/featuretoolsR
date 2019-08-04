@@ -11,8 +11,10 @@
 #' @return A `featuretools` feature matrix.
 #'
 #' @examples
+#' \dontrun{
 #' es <- as_entityset(cars, index = "row_number")
 #' dfs(es, target_entity = "df1", trans_primitives = c("and"))
+#' }
 dfs <- function(
   entityset,
   target_entity,

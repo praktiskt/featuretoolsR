@@ -5,6 +5,7 @@
 #' @param file The file containing the features.
 #'
 #' @examples
+#' \dontrun{
 #' library(magrittr)
 #'
 #' # Create mock datasets
@@ -27,7 +28,7 @@
 #'
 #' # Load saves features
 #' features <- load_features("some.features")
-#'
+#' }
 load_features <- function(file = NA) {
 
   # Sanitize input

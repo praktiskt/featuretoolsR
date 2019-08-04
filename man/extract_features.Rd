@@ -16,6 +16,7 @@ All features created during \link[featuretoolsR]{dfs}, as a tibble.
 This function is used to extract all features created from \link[featuretoolsR]{dfs}.
 }
 \examples{
+\dontrun{
 library(magrittr)
 options(stringsAsFactors = TRUE)
 set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
@@ -32,5 +33,5 @@ as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") \%>\%
   ) \%>\%
   dfs(target_entity = "set_1", trans_primitives = c("and")) \%>\%
   extract_features()
-
+}
 }

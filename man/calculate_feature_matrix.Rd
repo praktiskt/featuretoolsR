@@ -20,6 +20,7 @@ A feature matrix
 This function is used to create a feature matrix based on a custom list of features (usually created from \link[featuretoolsR]{save_features}).
 }
 \examples{
+\dontrun{
 library(magrittr)
 
 # Create some mock data
@@ -51,5 +52,5 @@ es <- as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") \%>\%
     child_idx = "key"
   )
 calculate_feature_matrix(entityset = es, features = load_features("some.features"))
-
+}
 }

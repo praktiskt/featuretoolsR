@@ -13,5 +13,7 @@ A list of all primitives available.
 List all available primitives from `featuretools` which can be passed to \link[featuretoolsR]{dfs}.
 }
 \examples{
+\dontrun{
 featuretoolsR::list_primitives()
+}
 }
