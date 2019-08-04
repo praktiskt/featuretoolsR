@@ -24,9 +24,6 @@ add_relationship <- function(
   set2,
   idx
 ) {
-
-  ft <- reticulate::import("featuretools")
-
   # Find indexes for entites and variables inside entitysets
   es_names <- purrr::map_dfr(lapply(
     X = 1:length(entityset$entities),
@@ -48,18 +45,15 @@ add_relationship <- function(
 
   entity_set1_pos <- es_names$entity_idx[es_names$entity_name == set1][[1]]
   entity_set2_pos <- es_names$entity_idx[es_names$entity_name == set2][[1]]
-  index_set1_pos <- dplyr::filter(es_names,
-                                  variable_name == idx,
-                                  entity_name == set1)$variable_idx
-  index_set2_pos <- dplyr::filter(es_names,
-                                  variable_name == idx,
-                                  entity_name == set2)$variable_idx
+  index_set1_pos <- es_names$variable_idx[es_names$variable_name == idx & es_names$entity_name == set1]
+  index_set2_pos <- es_names$variable_idx[es_names$variable_name == idx & es_names$entity_name == set2]
+
   if (length(index_set1_pos) == 0 || length(index_set2_pos) == 0) {
     stop("Couldn't find index column `", idx, "` in `", set1, "` or `", set2, "`")
   }
 
   # Construct new relationship
-  rel <- ft$Relationship(
+  rel <- .ft$Relationship(
     entityset$entities[[entity_set1_pos]]$variables[[index_set1_pos]],
     entityset$entities[[entity_set2_pos]]$variables[[index_set2_pos]]
   )

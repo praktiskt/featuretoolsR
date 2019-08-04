@@ -10,7 +10,7 @@
 #'
 #' @importFrom caret nearZeroVar
 #' @importFrom purrr map
-#' @importFrom tibble as.tibble
+#' @importFrom tibble as_tibble
 #'
 #' @examples
 #' library(magrittr)
@@ -32,7 +32,7 @@ tidy_feature_matrix <- function(
 ) {
 
   # Coerce into R-object.
-  to_r <- tibble::as.tibble(reticulate::py_to_r(.data[[1]]))
+  to_r <- tibble::as_tibble(.data[[1]])
 
   # Variables get duplicated when coercing object from Python to R. Cleanup.
   nondupe <- to_r[, !duplicated(names(to_r))]

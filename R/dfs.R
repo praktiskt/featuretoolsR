@@ -21,9 +21,6 @@ dfs <- function(
   max_depth = 2L,
   ...
 ) {
-  # Load featuretools
-  ft <- reticulate::import("featuretools")
-
   # Ensure primitives are in the correct format
   if(!is.list(agg_primitives)) {
     agg_primitives <- as.list(agg_primitives)
@@ -48,7 +45,7 @@ dfs <- function(
   }
 
   # DFS
-  feature_matrix <- ft$dfs(
+  feature_matrix <- .ft$dfs(
     entityset = entityset,
     target_entity = target_entity,
     agg_primitives = reticulate::r_to_py(agg_primitives),

@@ -29,12 +29,9 @@ load_features <- function(file = NA) {
   if(is.na(file))
     stop("No file specified.")
 
-  # Load featuretools
-  ft <- reticulate::import("featuretools")
-
   # Attempt to load file.
   return(
-    ft$load_features(
+    .ft$load_features(
       normalizePath(file)
     )
   )

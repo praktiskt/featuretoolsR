@@ -29,8 +29,7 @@ as_entityset <- function(
   if(nrow(.data) == 0) warning("`.data` contains zero rows.`")
 
   # Create entityset.
-  ft <- reticulate::import("featuretools")
-  es <- ft$EntitySet(id = id)
+  es <- .ft$EntitySet(id = id)
 
   # If index is unset, warn user and create a new index variable.
   if(is.na(index)) {

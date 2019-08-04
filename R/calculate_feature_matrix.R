@@ -35,13 +35,9 @@ calculate_feature_matrix <- function(
   features,
   ...
 ) {
-
-  # Import featuretools
-  ft <- reticulate::import("featuretools")
-
   # Run featuretools
   return(
-    ft$calculate_feature_matrix(
+    .ft$calculate_feature_matrix(
       features = features,
       entityset = entityset,
       ...

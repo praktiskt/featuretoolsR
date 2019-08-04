@@ -7,8 +7,7 @@
 #' @examples
 #' featuretoolsR::list_primitives()
 list_primitives <- function() {
-  ft <- reticulate::import("featuretools")
-  ft$list_primitives()
+  .ft$list_primitives()
 }
 
 

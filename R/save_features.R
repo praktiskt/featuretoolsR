@@ -2,7 +2,6 @@
 #' @description Used to save all or a subset of features created during \link[featuretoolsR]{dfs}.
 #' @export
 #'
-#' @importFrom glue glue
 #' @importFrom stringr str_sub
 #' @importFrom tibble is.tibble
 #'
@@ -51,18 +50,14 @@ save_features <- function(
   ## If user didn't specify a file name, generate one.
   if(is.na(filename)) {
     tmp <- paste0(paste0(sample(c(letters, LETTERS), 16, FALSE), collapse = ""), ".features")
-    warning(glue::glue("No `filename` passed, generated: ", tmp, "\n"))
+    warning("No `filename` passed, generated: ", tmp)
     path <- paste0(path, tmp)
   } else {
     path <- paste0(path, filename)
   }
 
-
-  # Load featuretools
-  ft <- reticulate::import("featuretools")
-
   # Save all features passed from `extract_features`.
-  ft$save_features(
+  .ft$save_features(
     features = .data$feature,
     location = path
   )
