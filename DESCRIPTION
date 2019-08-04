@@ -5,7 +5,7 @@ Version: 0.3.0
 Author: person("Magnus", "Furugård", email = "magnus.furugard@gmail.com", role = c("aut", "cre"))
 Maintainer: Magnus Furugård <magnus.furugard@gmail.com>
 Description: A reticulate-based interface to the Python module Featuretools.
-License: MIT + file LICENCE
+License: MIT + file LICENSE
 URL: https://github.com/magnusfurugard/featuretoolsR
 BugReports: https://github.com/magnusfurugard/featuretoolsR/issues
 Depends: 
