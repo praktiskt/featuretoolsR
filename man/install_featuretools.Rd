@@ -18,5 +18,7 @@ install_featuretools(custom_virtualenv = F, method = "auto",
 Setup for featuretools in it's own virtualenv, or into the default reticulate virtualenv.
 }
 \examples{
+\dontrun{
 featuretoolsR::install_featuretools()
+}
 }

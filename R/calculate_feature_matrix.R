@@ -8,6 +8,7 @@
 #' @return A feature matrix
 #'
 #' @examples
+#' \dontrun{
 #' library(magrittr)
 #'
 #' # Create some mock data
@@ -39,7 +40,7 @@
 #'     child_idx = "key"
 #'   )
 #' calculate_feature_matrix(entityset = es, features = load_features("some.features"))
-#'
+#' }
 calculate_feature_matrix <- function(
   entityset,
   features,

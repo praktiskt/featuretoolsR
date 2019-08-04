@@ -16,5 +16,7 @@ An entityset.
 Create a blank entityset. A shortcut for `featuretools'` `EntitySet`.
 }
 \examples{
+\dontrun{
 create_entityset(id = "my_entityset")
+}
 }

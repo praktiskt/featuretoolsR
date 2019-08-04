@@ -3,13 +3,14 @@
 #' @export
 #'
 #' @importFrom stringr str_sub
-#' @importFrom tibble is.tibble
+#' @importFrom tibble is_tibble
 #'
 #' @param .data The tibble of features returned from \link[featuretoolsR]{extract_features}.
 #' @param filename (optional) The name of the file to produce.
 #' @param path (optional) The path where the feature file should be placed.
 #'
 #' @examples
+#' \dontrun{
 #' library(magrittr)
 #' options(stringsAsFactors = TRUE)
 #' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
@@ -27,6 +28,7 @@
 #'   dfs(target_entity = "set_1", trans_primitives = c("and")) %>%
 #'   extract_features() %>%
 #'   save_features(filename = "some.features")
+#' }
 save_features <- function(
   .data,
   filename = NA,
@@ -35,7 +37,7 @@ save_features <- function(
 
   # Sanitize input
   ## Input should be a tibble with 2 variables.
-  if(any(c(colnames(.data) != c("name", "feature"), !tibble::is.tibble(.data))))
+  if(any(c(colnames(.data) != c("name", "feature"), !tibble::is_tibble(.data))))
     stop("Bad input. Did you forget to use `extract_features`?")
 
   ## If user didn't set path, use working directory.

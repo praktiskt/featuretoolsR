@@ -7,7 +7,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' featuretoolsR::install_featuretools()
+#' }
 install_featuretools <- function(custom_virtualenv = F, method = "auto", conda = "auto") {
 
   if(custom_virtualenv) {

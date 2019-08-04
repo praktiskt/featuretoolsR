@@ -13,6 +13,7 @@
 #' @importFrom tibble as_tibble
 #'
 #' @examples
+#' \dontrun{
 #' library(magrittr)
 #' options(stringsAsFactors = TRUE)
 #' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
@@ -29,6 +30,7 @@
 #'   ) %>%
 #'   dfs(target_entity = "set_1", trans_primitives = c("and")) %>%
 #'   tidy_feature_matrix(remove_nzv = TRUE, nan_is_na = TRUE)
+#' }
 tidy_feature_matrix <- function(
   .data,
   remove_nzv = FALSE,
