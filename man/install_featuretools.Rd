@@ -4,10 +4,18 @@
 \alias{install_featuretools}
 \title{Install featuretools}
 \usage{
-install_featuretools()
+install_featuretools(custom_virtualenv = F, method = "auto",
+  conda = "auto")
+}
+\arguments{
+\item{custom_virtualenv}{Defaults to false. Set to true if you wish to use a custom virtualenv for featuretoolsR.}
+
+\item{method}{The installation method passed to `reticulate::py_install`. Defaults to "auto".}
+
+\item{conda}{Whether to use conda or not. Passed to `reticulate::py_install`. Defaults to "auto".}
 }
 \description{
-Setup for featuretools in it's own virtualenv.
+Setup for featuretools in it's own virtualenv, or into the default reticulate virtualenv.
 }
 \examples{
 featuretoolsR::install_featuretools()
