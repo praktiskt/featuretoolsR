@@ -1,14 +1,24 @@
 Package: featuretoolsR
 Type: Package
-Title: Interact with the Python module Featuretools through R.
+Title: Interact with the Python module Featuretools through R
 Version: 0.3.0
-Authors@R: person("Magnus", "Furugård", email = "magnus.furugard@gmail.com", role = c("aut", "cre"))
+Author: person("Magnus", "Furugård", email = "magnus.furugard@gmail.com", role = c("aut", "cre"))
 Maintainer: Magnus Furugård <magnus.furugard@gmail.com>
 Description: A reticulate-based interface to the Python module Featuretools.
-License: MIT
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 6.0.1
+License: MIT + file LICENCE
+URL: https://github.com/magnusfurugard/featuretoolsR
+BugReports: https://github.com/magnusfurugard/featuretoolsR/issues
+Depends: 
+  R (>= 3.4.2)
 Imports:
   reticulate, 
-  caret
+  caret, 
+  dplyr,
+  purrr, 
+  stringr, 
+  tibble, 
+  magrittr, 
+  cli
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1

@@ -10,9 +10,9 @@
 #'
 #' @examples
 #' library(magrittr)
-#' options(stringsAsFactors = T)
-#' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, T))
-#' set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, T))
+#' options(stringsAsFactors = TRUE)
+#' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
+#' set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, TRUE))
 #' # Common variable: `key`
 #'
 #' as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") %>%
@@ -24,9 +24,6 @@ add_relationship <- function(
   set2,
   idx
 ) {
-
-  ft <- reticulate::import("featuretools")
-
   # Find indexes for entites and variables inside entitysets
   es_names <- purrr::map_dfr(lapply(
     X = 1:length(entityset$entities),
@@ -36,7 +33,7 @@ add_relationship <- function(
         FUN = function(x) x$id
       ))
 
-      t <- data.frame(variable_name = variables, stringsAsFactors = F)
+      t <- data.frame("variable_name" = variables, stringsAsFactors = FALSE)
       t$variable_idx <- 1:nrow(t)
       t$entity_name <- names(entityset$entity_dict)[[set]]
       t$entity_idx <- set
@@ -48,18 +45,15 @@ add_relationship <- function(
 
   entity_set1_pos <- es_names$entity_idx[es_names$entity_name == set1][[1]]
   entity_set2_pos <- es_names$entity_idx[es_names$entity_name == set2][[1]]
-  index_set1_pos <- dplyr::filter(es_names,
-                                  variable_name == idx,
-                                  entity_name == set1)$variable_idx
-  index_set2_pos <- dplyr::filter(es_names,
-                                  variable_name == idx,
-                                  entity_name == set2)$variable_idx
+  index_set1_pos <- es_names$variable_idx[es_names$variable_name == idx & es_names$entity_name == set1]
+  index_set2_pos <- es_names$variable_idx[es_names$variable_name == idx & es_names$entity_name == set2]
+
   if (length(index_set1_pos) == 0 || length(index_set2_pos) == 0) {
     stop("Couldn't find index column `", idx, "` in `", set1, "` or `", set2, "`")
   }
 
   # Construct new relationship
-  rel <- ft$Relationship(
+  rel <- .ft$Relationship(
     entityset$entities[[entity_set1_pos]]$variables[[index_set1_pos]],
     entityset$entities[[entity_set2_pos]]$variables[[index_set2_pos]]
   )

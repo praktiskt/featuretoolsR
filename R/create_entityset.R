@@ -8,7 +8,6 @@
 #' @examples
 #' create_entityset(id = "my_entityset")
 create_entityset <- function(id) {
-  ft <- reticulate::import("featuretools")
-  es <- ft$EntitySet(id = id)
+  es <- .ft$EntitySet(id = id)
   return(es)
 }

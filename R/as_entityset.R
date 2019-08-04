@@ -8,6 +8,7 @@
 #' @param id The id of this entityset.
 #' @param index Name of id column in the dataframe.
 #' @param time_index Name of the time column in the dataframe.
+#' @param entity_id An identifier for this entity.
 #' @param ... Additional variables passed to `add_entity`.
 #' @return A modified entityset.
 #'
@@ -28,8 +29,7 @@ as_entityset <- function(
   if(nrow(.data) == 0) warning("`.data` contains zero rows.`")
 
   # Create entityset.
-  ft <- reticulate::import("featuretools")
-  es <- ft$EntitySet(id = id)
+  es <- .ft$EntitySet(id = id)
 
   # If index is unset, warn user and create a new index variable.
   if(is.na(index)) {

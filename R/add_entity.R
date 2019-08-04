@@ -24,8 +24,6 @@ add_entity <- function(
   time_index = NULL,
   ...
 ) {
-  ft <- reticulate::import("featuretools")
-
   # Construct variable_types to handle factors as categorical variables.
   classes <- purrr::map_dfr(sapply(df, FUN = function(col) {
     c <- class(col)
@@ -40,7 +38,7 @@ add_entity <- function(
     for (i in 1:length(classes)) {
       suppressWarnings({
         if (class(df[, i]) == "factor") {
-          variable_types[[names(df)[i]]] <- ft$variable_types$Categorical
+          variable_types[[names(df)[i]]] <- .ft$variable_types$Categorical
         }
       })
     }
