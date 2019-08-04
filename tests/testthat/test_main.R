@@ -8,8 +8,8 @@ source("utils.R")
 library(magrittr)
 set_size <- 2
 value_variables <- 2
-set_1 <- generate_mock_data(set_size)
-set_2 <- generate_mock_data(set_size)
+set_1 <- generate_mock_data(set_size, value_variables)
+set_2 <- generate_mock_data(set_size, value_variables)
 
 # Basic entity creation
 test_that("can create entity through as_entityset", {
@@ -114,7 +114,7 @@ test_that("can load features", {
 })
 
 # Tidying a feature matrix
-test_that("can load features", {
+test_that("can tidy feature matrix after dfs", {
   skip_if_no_featuretools()
 
   tidy <- as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") %>%
