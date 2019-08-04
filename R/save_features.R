@@ -22,7 +22,7 @@
 #'   add_relationship(set1 = "set_1", set2 = "set_2", idx = "key") %>%
 #'   dfs(target_entity = "set_1", trans_primitives = c("and")) %>%
 #'   extract_features() %>%
-#'   save_features(filename = "some.features", path = "../")
+#'   save_features(filename = "some.features")
 save_features <- function(
   .data,
   filename = NA,
