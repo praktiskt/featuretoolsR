@@ -1,3 +1,5 @@
+library(testthat)
+
 featuretools_available <- function() {
   return(reticulate::py_module_available("featuretools"))
 }
