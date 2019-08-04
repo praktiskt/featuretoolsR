@@ -55,7 +55,8 @@ es <- es %>%
   add_relationship(
     parent_set = "set_1", 
     child_set = "set_2", 
-    idx = "key"
+    parent_idx = "key", 
+    child_idx = "key"
   )
 ```
 

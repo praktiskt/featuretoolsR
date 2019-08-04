@@ -15,7 +15,12 @@
 #' # Use dfs to create features
 #' as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") %>%
 #'   add_entity(entity_id = "set_2", df = set_2, index = "key") %>%
-#'   add_relationship(parent_set = "set_1", child_set = "set_2", idx = "key") %>%
+#'   add_relationship(
+#'     parent_set = "set_1",
+#'     child_set = "set_2",
+#'     parent_idx = "key",
+#'     child_idx = "key"
+#'   ) %>%
 #'   dfs(target_entity = "set_1", trans_primitives = c("and")) %>%
 #'   extract_features() %>%
 #'   save_features(filename = "some.features")
