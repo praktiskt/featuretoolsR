@@ -1,19 +1,23 @@
 .onAttach <- function(...) {
-  packageStartupMessage("Attaching featuretoolsR with default options")
 
-  # Check if we have a virtualenv available
-  path <- paste(reticulate::virtualenv_root(), "featuretoolsR", sep = "/")
-  if(!file.exists(path)) {
-    packageStartupMessage("WARNING: No virtualenv found. Please run `install_featuretools()` to create one and setup featuretools.")
+  start <- paste("featuretoolsR", utils::packageVersion("featuretoolsR"))
+  packageStartupMessage(cli::cat_boxx(start, padding = c(0, 3, 0, 3), border_style = "double"), appendLF = FALSE)
+
+  # See if featuretools already is installed
+  if(!reticulate::py_module_available("featuretools")) {
+    msg <- cli::cat_bullet("Featuretools unavailable. Please run `install_featuretools()`, or install featuretools with pip.", bullet = "cross", bullet_col = "red")
   } else {
-    # Select virtualenv
-    reticulate::use_virtualenv(getOption("featuretoolsR.virtualenv_name"))
+    # Display featuretools info
+    ft <- paste("Using Featuretools", reticulate::py_get_attr(.ft, "__version__"))
+    msg <- cli::cat_bullet(ft, bullet = "tick", bullet_col = "green")
   }
+  packageStartupMessage(msg)
 
 }
 
+.ft <- NULL
 .onLoad <- function(...){
-  reticulate::import("featuretools", delay_load = TRUE)
+  .ft <<- reticulate::import("featuretools", delay_load = TRUE)
   options(
     featuretoolsR.force_posixct = TRUE,
     featuretoolsR.posixct_tz = "UTC",
