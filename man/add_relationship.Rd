@@ -4,16 +4,16 @@
 \alias{add_relationship}
 \title{Add a relationship to an entityset}
 \usage{
-add_relationship(entityset, set1, set2, idx)
+add_relationship(entityset, parent_set, child_set, idx)
 }
 \arguments{
 \item{entityset}{The entityset to modify.}
 
-\item{set1}{The name of the first entity to link.}
+\item{parent_set}{The name of the parent set.}
 
-\item{set2}{The name of the second entity to link.}
+\item{child_set}{The name of the child set.}
 
-\item{idx}{The variable  `set1` and `set2` have in common.}
+\item{idx}{The variable  `parent_set` and `child_set` have in common.}
 }
 \value{
 A modified entityset.
@@ -30,5 +30,5 @@ set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, TRUE))
 
 as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") \%>\%
   add_entity(entity_id = "set_2", df = set_2, index = "key") \%>\%
-  add_relationship(set1 = "set_1", set2 = "set_2", idx = "key")
+  add_relationship(parent_set = "set_1", child_set = "set_2", idx = "key")
 }
