@@ -47,7 +47,6 @@ tidy_feature_matrix <- function(
   # Process `nondupe` according to user defined parameters.
   ## Remove near zero variance
   if(remove_nzv) {
-    cat("Removing near zero variance variables\n")
     nzvs <- purrr::map_dfr(
       lapply(
         X = names(nondupe),
@@ -64,7 +63,6 @@ tidy_feature_matrix <- function(
 
   ## Replace all `NaN` with `NA`
   if(nan_is_na) {
-    cat("Changing all `NaN` to `NA`\n")
     for (colname in names(nondupe)) {
       nondupe[, colname][[1]][is.nan(nondupe[, colname][[1]])] <- NA
     }
@@ -72,7 +70,6 @@ tidy_feature_matrix <- function(
 
   ## Make variable names more R-friendly
   if(clean_names) {
-    cat("Creating R-friendly variable names\n")
     n <- tolower(names(nondupe))
     tn <- gsub("[^A-z0-9]", "_", n)
     tn <- gsub("(_+?$)|(__+?)", "", tn)
