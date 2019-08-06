@@ -5,7 +5,7 @@
 #' @return A list of all primitives available.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' featuretoolsR::list_primitives()
 #' }
 list_primitives <- function() {

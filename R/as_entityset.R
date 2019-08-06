@@ -13,7 +13,7 @@
 #' @return A modified entityset.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' as_entityset(cars, index = "row_number")
 #' }
 as_entityset <- function(

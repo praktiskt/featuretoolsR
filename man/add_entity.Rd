@@ -27,7 +27,7 @@ A modified entityset.
 Add an entity to an entityset.
 }
 \examples{
-\dontrun{
+\donttest{
 library(magrittr)
 create_entityset("set") \%>\%
   add_entity(df = cars,

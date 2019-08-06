@@ -4,7 +4,7 @@
 \alias{install_featuretools}
 \title{Install featuretools}
 \usage{
-install_featuretools(custom_virtualenv = F, method = "auto",
+install_featuretools(custom_virtualenv = FALSE, method = "auto",
   conda = "auto")
 }
 \arguments{

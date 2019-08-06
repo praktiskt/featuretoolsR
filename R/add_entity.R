@@ -11,7 +11,7 @@
 #' @return A modified entityset.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(magrittr)
 #' create_entityset("set") %>%
 #'   add_entity(df = cars,
