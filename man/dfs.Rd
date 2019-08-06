@@ -27,7 +27,7 @@ A `featuretools` feature matrix.
 The main function from featuretools used to create new features.
 }
 \examples{
-\dontrun{
+\donttest{
 es <- as_entityset(cars, index = "row_number")
 dfs(es, target_entity = "df1", trans_primitives = c("and"))
 }

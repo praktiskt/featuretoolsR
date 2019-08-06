@@ -8,13 +8,12 @@
 #' @return A feature matrix
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(magrittr)
 #'
 #' # Create some mock data
-#' options(stringsAsFactors = TRUE)
-#' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
-#' set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, TRUE))
+#' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE), stringsAsFactors = TRUE)
+#' set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, TRUE), stringsAsFactors = TRUE)
 #' # Common variable: `key`
 #'
 #' # Create features and save them

@@ -6,7 +6,7 @@
 #' @return An entityset.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' create_entityset(id = "my_entityset")
 #' }
 create_entityset <- function(id) {

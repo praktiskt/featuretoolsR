@@ -10,13 +10,13 @@
 #' @param path (optional) The path where the feature file should be placed.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(magrittr)
-#' options(stringsAsFactors = TRUE)
-#' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE))
-#' set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, TRUE))
+#' set_1 <- data.frame(key = 1:100, value = sample(letters, 100, TRUE), stringsAsFactors = TRUE)
+#' set_2 <- data.frame(key = 1:100, value = sample(LETTERS, 100, TRUE), stringsAsFactors = TRUE)
 #' # Common variable: `key`
 #'
+#' dir <- tempdir()
 #' as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") %>%
 #'   add_entity(entity_id = "set_2", df = set_2, index = "key") %>%
 #'   add_relationship(
@@ -27,7 +27,7 @@
 #'   ) %>%
 #'   dfs(target_entity = "set_1", trans_primitives = c("and")) %>%
 #'   extract_features() %>%
-#'   save_features(filename = "some.features")
+#'   save_features(filename = "some.features", path = dir)
 #' }
 save_features <- function(
   .data,

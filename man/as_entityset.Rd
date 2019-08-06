@@ -27,7 +27,7 @@ A modified entityset.
 Create an entityset with a selected `data.frame` as an entity.
 }
 \examples{
-\dontrun{
+\donttest{
 as_entityset(cars, index = "row_number")
 }
 }
