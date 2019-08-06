@@ -1,13 +1,13 @@
 Package: featuretoolsR
 Type: Package
-Title: Interact with the Python Module Featuretools Through R
+Title: Interact with the 'Python' Module 'Featuretools'
 Version: 0.4.2
 Authors@R: person("Magnus", "Furugård", email = "magnus.furugard@gmail.com", role = c("aut", "cre"))
 Maintainer: Magnus Furugård <magnus.furugard@gmail.com>
-Description: A 'reticulate'-based interface to the Python module 'Featuretools'.
-  The package grants functionality to interact with Pythons 'Featuretools' module through R, which
-  allows for automated feature engineering on any data frame. Valid features and new data sets can after
-  feature synthesis easily be extracted.
+Description: A 'reticulate'-based interface to the 'Python' module 'Featuretools'.
+  The package grants functionality to interact with 'Pythons' 'Featuretools' module, which allows 
+  for automated feature engineering on any data frame. Valid features and new data sets can, after
+  feature synthesis, easily be extracted.
 License: MIT + file LICENSE
 URL: https://github.com/magnusfurugard/featuretoolsR
 BugReports: https://github.com/magnusfurugard/featuretoolsR/issues
