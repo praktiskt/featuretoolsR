@@ -13,7 +13,7 @@ The recommended way is to install this package with devtools: `devtools::install
 You'll need to have a working Python environment as well as `featuretools` installed. The recommended way is to use the built-in function `install_featuretools()` which automatically sets up a virtual environment for the package and installs `featuretools`.
 
 # Usage
-All functions in `featuretoolsR` comes with documentation, but it's advised to briefly browse through the [Featuretools Python documentation](https://docs.featuretools.com/index.html). It'll cover things like `entities`, `relationships` and `dfs`. 
+All functions in `featuretoolsR` comes with documentation, but it's advised to briefly browse through the [Featuretools Python documentation](https://docs.featuretools.com/). It'll cover things like `entities`, `relationships` and `dfs`. 
 
 ## Creating an entityset
 An entityset is the set which contain all your entities. To create a set and add an entity straight away, you can use `as_entityset`. 
