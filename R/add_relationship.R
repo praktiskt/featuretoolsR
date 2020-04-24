@@ -6,7 +6,7 @@
 #' @param parent_set The name of the parent set.
 #' @param child_set The name of the child set.
 #' @param parent_idx The index variable of the `parent_set`.
-#' @param child_idx The index variable of the `child_set`.
+#' @param child_idx The index variable of the `child_set`. Defaults to `parent_set`.
 #' @return A modified entityset.
 #'
 #' @examples
@@ -30,8 +30,13 @@ add_relationship <- function(
   parent_set,
   child_set,
   parent_idx,
-  child_idx
+  child_idx=NULL
 ) {
+
+  if(is.null(child_idx)) {
+    child_idx <- parent_idx
+  }
+
   # Find indexes for entites and variables inside entitysets
   es_names <- purrr::map_dfr(lapply(
     X = 1:length(entityset$entities),
