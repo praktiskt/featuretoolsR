@@ -1,9 +1,9 @@
 #' Install featuretools
 #' @description Setup for featuretools in it's own virtualenv, or into the default reticulate virtualenv.
 #'
-#' @param custom_virtualenv Defaults to false. Set to true if you wish to use a custom virtualenv for featuretoolsR.
-#' @param method The installation method passed to `reticulate::py_install`. Defaults to "auto".
-#' @param conda Whether to use conda or not. Passed to `reticulate::py_install`. Defaults to "auto".
+#' @param custom_virtualenv Set to true if you wish to use a custom virtualenv for featuretoolsR.
+#' @param method The installation method passed to \link[reticulate]{py_install}. Defaults to "auto".
+#' @param conda Whether to use conda or not. Passed to \link[reticulate]{py_install}. Defaults to "auto".
 #' @export
 #'
 #' @examples
@@ -12,6 +12,18 @@
 #' }
 install_featuretools <- function(custom_virtualenv = FALSE, method = "auto", conda = "auto") {
 
+  # See if conda, pip or pip3 is installed.
+  status <- list(
+    conda = cli_is_installed("conda"),
+    pip = cli_is_installed("pip"),
+    pip3 = cli_is_installed("pip3")
+  )
+
+  if(!any(status == TRUE)) {
+    stop("Neither `pip`, `pip3` or `conda` was found. At least one is required to install Featuretools.")
+  }
+
+  # Installation
   if(custom_virtualenv) {
     virtualenv_name <- getOption("featuretoolsR.virtualenv_name")
     path <- paste(reticulate::virtualenv_root(), virtualenv_name, sep = "/")
@@ -34,4 +46,16 @@ install_featuretools <- function(custom_virtualenv = FALSE, method = "auto", con
     reticulate::py_install("featuretools", method = method, conda = conda)
   }
 
+  # Reload library
+  unloadNamespace("featuretoolsR")
+  rstudioapi::restartSession("library(featuretoolsR)")
+}
+
+cli_is_installed <- function(command) {
+  tryCatch(expr = {
+    system(command, intern = T, ignore.stderr = T)
+    return(TRUE)
+  }, error = function(e) {
+    return(FALSE)
+  })
 }
