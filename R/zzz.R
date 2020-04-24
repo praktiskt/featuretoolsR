@@ -3,7 +3,7 @@
   start <- paste("featuretoolsR", utils::packageVersion("featuretoolsR"))
   packageStartupMessage(cli::cat_boxx(start, padding = c(0, 3, 0, 3), border_style = "double"), appendLF = FALSE)
 
-  if(reticulate::py_module_available("pip")) {
+  if(!reticulate::py_module_available("pip")) {
     m <- "pip is not installed. Please install pip to proceed."
     msg <- cli::cat_bullet(m, bullet = "cross", bullet_col = "red")
   } else {
