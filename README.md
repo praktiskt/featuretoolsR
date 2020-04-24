@@ -7,7 +7,11 @@ An R interface to the Python module Featuretools.
 # Installing
 
 ## Package
-The recommended way is to install this package with devtools: `devtools::install_github("magnusfurugard/featuretoolsR")`.
+### CRAN
+The latest stable release is found on [CRAN](https://cran.r-project.org/package=featuretoolsR).
+
+### Github
+You can get the latest version of `featuretoolsR` by installing it straight from Github:  `devtools::install_github("magnusfurugard/featuretoolsR")`.
 
 ## Featuretools
 You'll need to have a working Python environment as well as `featuretools` installed. The recommended way is to use the built-in function `install_featuretools()` which automatically sets up a virtual environment for the package and installs `featuretools`.
@@ -61,7 +65,7 @@ es <- es %>%
 ```
 
 ## Deep feature synthesis
-The bread and butter of Featuretools is the `dfs`-function (official docs [here](https://docs.featuretools.com/automated_feature_engineering/afe.html#)). It will attempt to create features based on `*_primitives` you provide (more on primitives below).
+The bread and butter of Featuretools is the `dfs`-function (official docs [here](https://docs.featuretools.com/en/stable/automated_feature_engineering/afe.html)). It will attempt to create features based on `*_primitives` you provide (more on primitives below).
 ```
 ft_matrix <- es %>%
   dfs(

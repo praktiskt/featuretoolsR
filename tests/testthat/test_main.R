@@ -45,6 +45,21 @@ test_that("can add relationship between two entities", {
   expect_true(is.list(es$relationships) && length(es$relationships) > 0)
 })
 
+test_that("relationship can be inherited from parent_idx", {
+  skip_if_no_featuretools()
+
+  es <- as_entityset(set_1, index = "key", entity_id = "set_1", id = "demo") %>%
+    add_entity(entity_id = "set_2", df = set_2, index = "key") %>%
+    add_relationship(
+      parent_set = "set_1",
+      child_set = "set_2",
+      parent_idx = "key"
+    )
+
+  expect_true(is.list(es$relationships) && length(es$relationships) > 0)
+})
+
+
 # Deep feture synthesis
 test_that("can perform dfs", {
   skip_if_no_featuretools()
